@@ -1,0 +1,26 @@
+{
+  "name": "wish-list",
+  "version": "1.0.0",
+  "description": "A project to create wish list of task which needs to be done and manage that wish list as a user wants.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/my8286/wish-list.git"
+  },
+  "author": "manish yadav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/my8286/wish-list/issues"
+  },
+  "homepage": "https://github.com/my8286/wish-list#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.10",
+    "nodemon": "^2.0.3"
+  }
+}

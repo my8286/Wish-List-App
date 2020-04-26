@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div id="myDIV" class="header">
+    <p>
+        <%- include('includes/nav.ejs') %> <!--  To import nav  -->
+    </p>
+
+    <h2 style="margin:5px">My To Do List</h2>
+    <form id="myForm" onsubmit="">
+        <input type="text" id="myInput" placeholder="Title...">
+        <input type="submit" class="addBtn" value="add">
+    </form>
+    
+    
+</div>
+<ul>
+    <% task.forEach(item=>{ 
+        
+        if(item!=undefined) {%>
+        <li onclick="deleteme(this)"><%= item %></li>
+    <%} }) %>
+</ul>
+
+<script>
+   
+    document.getElementById("myForm").onsubmit= (e)=>{
+        e.preventDefault();
+
+        const url="http://localhost:8080/sent-data";
+
+        //console.log(e.target[0].value);
+        var data = { name: e.target[0].value };
+
+        fetch(url, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+            location.reload();
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+    }
+    
+    function deleteme(item)
+    {
+        var url="http://localhost:8080/remove/"+item.innerText;
+        fetch(url,{
+            method:'delete',
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log("message :",data);
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+        item.remove();
+            location.reload();
+    }
+</script>
+
+</body>
+</html>
