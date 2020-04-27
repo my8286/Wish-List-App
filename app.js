@@ -1,11 +1,17 @@
 const express=require('express');
 var bodyParser = require('body-parser')
 const app=express();
-const port=8080; // To intialise static port number on which server will be running
-const routes=require('./routes'); // To import routes
+const port= process.env.PORT || 8080; 
+
+// To import model here without exports from model>wish.js
+require('./models/wish');
+
+// To import routes
+const routes=require('./routes'); 
 
 // To sreving static file
 app.use(express.static('public')); 
+
 
 // To set the package to get view files 
 app.set('view engine','ejs') 

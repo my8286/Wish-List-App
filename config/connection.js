@@ -1,3 +1,6 @@
-module.exports = {
-    mongourl : 'mongodb+srv://manish:Fs15if031@m@cluster0-6xu0r.mongodb.net/test?retryWrites=true&w=majority'
+if(process.env.NODE_ENV=='production'){
+    module.exports = require('./production')
+}
+else{
+    module.exports = require('./development')
 }

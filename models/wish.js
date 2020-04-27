@@ -5,4 +5,6 @@ const WishSchema = Schema({
     wish:String
 })
 
-module.exports = mongoose.model('Wishes',WishSchema);
+//module.exports = mongoose.model('Wishes',WishSchema);  or
+
+mongoose.model('Wishes',WishSchema);

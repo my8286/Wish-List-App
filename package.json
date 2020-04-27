@@ -4,7 +4,7 @@
   "description": "A project to create wish list of task which needs to be done and manage that wish list as a user wants.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
