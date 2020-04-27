@@ -1,7 +1,18 @@
-
 const express = require("express");
 const app = express();
+const mongoose = require("mongoose");
+const {mongourl} =require("./config/connection");
+const Wish = require('./models/wish')
+
 var data=[];
+
+mongoose.connect(mongourl, {useNewUrlParser: true,useUnifiedTopology: true}, (err) => {
+    if (err)
+        console.error(err);
+    else
+        console.log("Connected to the mongodb"); 
+});
+
 module.exports=(app)=>{
     
     app.get('/',(req,res)=>{
@@ -13,8 +24,15 @@ module.exports=(app)=>{
     })
 
     app.post('/sent-data',(req,res)=>{
-        data.push(req.body.name);
-        console.log(data);
+        // data.push(req.body.name);
+         console.log(data);
+        const Item = new Wish({
+            wish:req.body.name
+        })
+
+        Item.save().then(data=>{
+            console.log("message : ",data);
+        })
         res.send(JSON.stringify(req.body));
     })
 
@@ -25,7 +43,7 @@ module.exports=(app)=>{
                 return item
             }
         })
-        console.log(req.params.id);
+        //console.log(req.params.id);
         res.send(data);
     })
 }
