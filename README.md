@@ -1,2 +1,2 @@
-# wish-list
-A project to create wish list of task which needs to be done and manage that wish list as a user wants.
+# Wish List App
+A project of storing wishes is developed in NodeJS. Mongo DB had been used to keep records.
